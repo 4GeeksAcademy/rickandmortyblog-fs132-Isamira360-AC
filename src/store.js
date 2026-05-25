@@ -1,7 +1,8 @@
 export const initialStore=()=>{
   return{
     message: null,
-    todos: [
+    characters: [],
+    todos:[
       {
         id: 1,
         title: "Make the bed",
@@ -18,6 +19,13 @@ export const initialStore=()=>{
 
 export default function storeReducer(store, action = {}) {
   switch(action.type){
+
+    case 'showCharacters':
+    return{
+      ...store,
+      characters: action.payload
+    }
+
     case 'add_task':
 
       const { id,  color } = action.payload

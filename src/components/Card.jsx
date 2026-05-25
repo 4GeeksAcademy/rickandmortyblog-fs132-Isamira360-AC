@@ -1,21 +1,29 @@
-export const Card = () => {
+import { Link } from "react-router-dom"
+
+
+export const Card = ({ name, url }) => {
+
+    const photo = url.split('/')
+    const id = photo[photo.length - 1]
+
     return (
         <div className="card flex-shrink-0" style={{ width: '18rem' }}>
             <img
-                src="https://via.placeholder.com/150"
-                className="card-img-top"
+                src={`https://rickandmortyapi.com/api/character/avatar/${id}.jpeg`}
+
                 alt="card"
             />
-
             <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <p className="card-text">
-                    Some quick example text to build on the card title.
-                </p>
+                <h5 className="card-title">{name}</h5>
                 <div className=" d-flex justify-content-between align-items-center">
-                    <button className="btn btn-primary">
-                        Ver mas...
-                    </button>
+
+                    <Link to={`/dynamic/${id}`}>
+                        <button className="btn btn-primary">
+                            Ver mas...
+                        </button>
+                    </Link>
+
+
                     <i className="fa-regular fa-heart btn" style={{ color: 'rgb(236, 7, 7)' }}></i>
                 </div>
             </div>
