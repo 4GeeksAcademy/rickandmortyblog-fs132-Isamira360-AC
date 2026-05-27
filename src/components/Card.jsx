@@ -7,7 +7,7 @@ export const Card = ({ name, url }) => {
     const id = photo[photo.length - 1]
 
     return (
-        <div className="card flex-shrink-0" style={{ width: '18rem' }}>
+        <div className="card flex-shrink-0" style={{ width: '13rem' }}>
             <img
                 src={`https://rickandmortyapi.com/api/character/avatar/${id}.jpeg`}
 
@@ -22,7 +22,6 @@ export const Card = ({ name, url }) => {
                             Ver mas...
                         </button>
                     </Link>
-
 
                     <i className="fa-regular fa-heart btn" style={{ color: 'rgb(236, 7, 7)' }}></i>
                 </div>

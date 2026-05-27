@@ -1,16 +1,48 @@
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import apiRick from "../services/apiRick";
 
 const Dynamic = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+
+  const [details, setDetails] = useState({});
 
   useEffect(() => {
-    console.log("ID recibido:", id);
+    apiRick.getCharacterDetail(id)
+      .then(data => setDetails(data));
   }, [id]);
 
   return (
-    <div>
-      esta es la pagina dinamica - ID: {id}
+    <div className="my-modal"
+      
+    >
+      <div className="card p-3 modal-card" style={{ width: "22rem" }}>
+        
+        <img
+          src={`https://rickandmortyapi.com/api/character/avatar/${id}.jpeg`}
+          className="card-img-top image-style"
+          alt={details.name}
+        />
+
+        <div className="card-body">
+          <h3>{details.name}</h3>
+
+          <p>Status: {details.status}</p>
+          <p>Species: {details.species}</p>
+          <p>Type: {details.type || "Unknown"}</p>
+          <p>Gender: {details.gender}</p>
+          <p>Origin: {details.origin?.name}</p>
+          <p>Location: {details.location?.name}</p>
+
+          <button
+            className="btn btn-danger w-100"
+            onClick={() => navigate("/")}
+          >
+            Cerrar
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

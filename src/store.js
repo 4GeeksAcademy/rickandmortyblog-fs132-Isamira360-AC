@@ -2,6 +2,7 @@ export const initialStore=()=>{
   return{
     message: null,
     characters: [],
+    locations:[],
     todos:[
       {
         id: 1,
@@ -19,6 +20,13 @@ export const initialStore=()=>{
 
 export default function storeReducer(store, action = {}) {
   switch(action.type){
+
+    case 'showLocations':
+    return{
+      ...store,
+      locations:action.payload
+
+    }
 
     case 'showCharacters':
     return{

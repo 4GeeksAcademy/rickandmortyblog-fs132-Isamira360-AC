@@ -8,7 +8,6 @@ apiRick.getInfo = async () => {
         if (!resp.ok) {
             throw new Error('Api is not responding')
         }
-
         const data = await resp.json()
         console.log(data)
         return data     
@@ -19,13 +18,12 @@ apiRick.getInfo = async () => {
     }
 }
 
-apiRick.getCharacterDetail= async()=>{
+apiRick.getCharacterDetail= async(characterId)=>{
     try {
-        const resp = await fetch(url+'/character'/)        
+        const resp = await fetch(url+'/character/'+characterId)        
         if (!resp.ok) {
             throw new Error('Api is not responding')
         }
-
         const data = await resp.json()
         console.log(data)
         return data     
@@ -36,7 +34,36 @@ apiRick.getCharacterDetail= async()=>{
     }
 }
 
+apiRick.getLocation = async () => {
+  try {
+    const resp = await fetch(url + '/location/');
 
+    if (!resp.ok) {
+      throw new Error('Api is not responding');
+    }
 
+    const data = await resp.json();
+    return data;
+
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+apiRick.getLocationDetails = async (idLocation) => {
+  try {
+    const resp = await fetch(url + '/location/'+idLocation);
+
+    if (!resp.ok) {
+      throw new Error('Api is not responding');
+    }
+
+    const data = await resp.json();
+    return data;
+
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 export default apiRick
