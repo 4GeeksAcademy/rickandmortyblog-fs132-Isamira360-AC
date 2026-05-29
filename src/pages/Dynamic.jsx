@@ -17,7 +17,7 @@ const Dynamic = () => {
     <div className="my-modal"
       
     >
-      <div className="card p-3 modal-card" style={{ width: "22rem" }}>
+      <div className="card p-3 modal-card character-card character-card-body" style={{ width: "22rem" }}>
         
         <img
           src={`https://rickandmortyapi.com/api/character/avatar/${id}.jpeg`}
@@ -36,7 +36,7 @@ const Dynamic = () => {
           <p>Location: {details.location?.name}</p>
 
           <button
-            className="btn btn-danger w-100"
+            className="btn btn-danger w-100 portal-btn"
             onClick={() => navigate("/")}
           >
             Cerrar

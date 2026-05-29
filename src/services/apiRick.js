@@ -66,4 +66,36 @@ apiRick.getLocationDetails = async (idLocation) => {
   }
 }
 
+
+apiRick.getEpisode = async () => {
+  try {
+    const resp = await fetch(url + '/episode');
+
+    if (!resp.ok) {
+      throw new Error('Api is not responding');
+    }
+
+    const data = await resp.json();
+    return data;
+
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+apiRick.getEpisodeDetails = async (idEpisode) => {
+  try {
+    const resp = await fetch(url + '/episode/'+idEpisode);
+
+    if (!resp.ok) {
+      throw new Error('Api is not responding');
+    }
+
+    const data = await resp.json();
+    return data;
+
+  } catch (error) {
+    console.error(error);
+  }
+}
 export default apiRick

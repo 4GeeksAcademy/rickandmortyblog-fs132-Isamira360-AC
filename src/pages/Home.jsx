@@ -5,6 +5,7 @@ import apiRick from "../services/apiRick.js";
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { CardLocation } from "../components/CardLocation.jsx";
+import  CardEpisode  from "../components/CardEpisode.jsx";
 
 export const Home = () => {
 
@@ -26,6 +27,16 @@ export const Home = () => {
 
     dispatch({
       type: "showLocations",
+      payload: data.results
+    });
+  });
+
+  apiRick.getEpisode()
+  .then(data => {
+    if (!data) return;
+
+    dispatch({
+      type: "showEpisodes",
       payload: data.results
     });
   });
@@ -59,17 +70,30 @@ export const Home = () => {
       </div>
 
 
-        <h2 className="mt-5">Episode</h2>
+        <h2 className="mt-5">Episodes</h2>
       <div className=" container d-flex overflow-auto gap-3 p-3">
-
-       
+        {store.episodes?.map((el, i) => (
+        <CardEpisode
+  key={i}
+  name={el.name}
+  air_date={el.air_date}
+  episode={el.episode}
+  id={el.id}
+  url={el.url}
+/>
+        ))}
+      
 
       </div>
-
-
     </div>
-
   );
 };
 
+/*
+      "id": 1,
+      "name": "Pilot",
+      "air_date": "December 2, 2013",
+      "episode": "S01E01",
+      "characters":
 
+*/

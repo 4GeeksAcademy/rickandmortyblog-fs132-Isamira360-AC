@@ -11,6 +11,7 @@ import { Single } from "./pages/Single";
 import { Demo } from "./pages/Demo";
 import Dynamic from "./pages/Dynamic";
 import LocationsDetails from "./pages/LocationsDetails";
+import EpisodeDetails from "./pages/EpisodeDetails";
 
 export const router = createBrowserRouter(
     createRoutesFromElements(
@@ -29,6 +30,9 @@ export const router = createBrowserRouter(
         <Route path="/demo" element={<Demo />} />
         <Route path="/dynamic/:id" element={<Dynamic/>} />
         <Route path="/location/:id" element={<LocationsDetails/>} />
+        <Route path="/episode/:id" element={<EpisodeDetails/>} />
       </Route>
     )
 );
+
+

@@ -7,25 +7,36 @@ export const Card = ({ name, url }) => {
     const id = photo[photo.length - 1]
 
     return (
-        <div className="card flex-shrink-0" style={{ width: '13rem' }}>
-            <img
-                src={`https://rickandmortyapi.com/api/character/avatar/${id}.jpeg`}
+       <div
+  className="card flex-shrink-0 character-card"
+  style={{ width: "13rem" }}
+>
 
-                alt="card"
-            />
-            <div className="card-body">
-                <h5 className="card-title">{name}</h5>
-                <div className=" d-flex justify-content-between align-items-center">
+  <img
+    src={`https://rickandmortyapi.com/api/character/avatar/${id}.jpeg`}
+    alt="card"
+  />
 
-                    <Link to={`/dynamic/${id}`}>
-                        <button className="btn btn-primary">
-                            Ver mas...
-                        </button>
-                    </Link>
+  <div className="card-body d-flex flex-column">
 
-                    <i className="fa-regular fa-heart btn" style={{ color: 'rgb(236, 7, 7)' }}></i>
-                </div>
-            </div>
-        </div>
+    <h5 className="card-title title-fixed">
+      {name}
+    </h5>
+
+    <div className="mt-auto d-flex justify-content-between align-items-center">
+
+      <Link to={`/dynamic/${id}`}>
+
+        <button className="btn portal-btn">
+          See more...
+        </button>
+
+      </Link>
+
+      <i className="fa-regular fa-heart favorite-icon"></i>
+
+    </div>
+  </div>
+</div>
     );
 };
